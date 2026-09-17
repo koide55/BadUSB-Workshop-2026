@@ -29,7 +29,7 @@ RP2040 搭載 SECCON バッジで **BadUSB(Rubber Ducky 型の HID 注入デバ�
 | 対象 | 中級(Python が読める / ターミナル操作に抵抗がない) |
 | 所要時間 | 半日(約 3.5〜4 時間、休憩・トラブル対応込み) |
 | 題材ボード | RP2040 搭載 SECCON バッジ基板(Waveshare RP2040-Zero) |
-| スタック | CircuitPython 9.x + `adafruit_hid` |
+| スタック | CircuitPython 10.x + `adafruit_hid` |
 | 標的 OS | macOS 版 / Windows 版を用意(参加者の環境に合わせて選ぶ) |
 
 ---

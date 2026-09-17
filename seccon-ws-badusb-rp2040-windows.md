@@ -5,7 +5,7 @@
 - **所要時間**: 半日(約 3.5〜4 時間、休憩・トラブル対応込み)
 - **標的 OS**: Windows 10 / Windows 11(母艦・被害役ともに Windows を想定)
 - **題材ボード**: RP2040 搭載 SECCON バッジ基板(Waveshare RP2040-Zero)
-- **スタック**: CircuitPython 9.x + `adafruit_hid`
+- **スタック**: CircuitPython 10.x + `adafruit_hid`
 
 ---
 
@@ -82,7 +82,7 @@ PowerShell、コマンドプロンプト、任意コマンドの実行、ダウ�
 >
 > **<https://circuitpython.org/board/waveshare_rp2040_zero/>**
 >
-> ページの「DOWNLOAD .UF2 NOW」から **9.x 系の最新安定版**(Language: English で可)をダウンロードします。
+> ページの「DOWNLOAD .UF2 NOW」から **10.x 系の最新安定版**(Language: English で可)をダウンロードします。
 > 会場では **オフライン配布**するので、講師は事前にこの `.uf2` を各自へ配ってください。
 > 万一このビルドが使えない場合は **Raspberry Pi Pico (RP2040) 汎用ビルド** でも USB HID/MSC は動きます
 > (GPIO ピン番号はボード資料に合わせて確認する)。
@@ -91,11 +91,11 @@ PowerShell、コマンドプロンプト、任意コマンドの実行、ダウ�
 `adafruit_hid` を使う。配布バンドルから **`CIRCUITPY\lib\` に `adafruit_hid` フォルダごと** コピーする。
 
 > **adafruit_hid の入手について**
-> Adafruit CircuitPython Library Bundle から入手します。CircuitPython 本体の **メジャーバージョンに合ったバンドル(9.x 系)** を選ぶこと。
+> Adafruit CircuitPython Library Bundle から入手します。CircuitPython 本体の **メジャーバージョンに合ったバンドル(10.x 系)** を選ぶこと。
 >
 > **<https://circuitpython.org/libraries>**
 >
-> `adafruit-circuitpython-bundle-9.x-mpy-*.zip` を展開し、`lib\adafruit_hid\` フォルダを `CIRCUITPY\lib\` へコピーします。UF2 と同様に **オフライン配布**しておくと会場でつまずきません。
+> `adafruit-circuitpython-bundle-10.x-mpy-*.zip` を展開し、`lib\adafruit_hid\` フォルダを `CIRCUITPY\lib\` へコピーします。UF2 と同様に **オフライン配布**しておくと会場でつまずきません。
 > コマンドで入れる場合は [circup](https://github.com/adafruit/circup)(`pip install circup` → `circup install adafruit_hid`)が、接続中のボードに合う版を自動で選んで入れてくれます。
 
 ```text
