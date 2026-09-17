@@ -4,7 +4,7 @@
 - **対象**: 中級(Python が読める / Windows の基本操作に抵抗がない)
 - **所要時間**: 半日(約 3.5〜4 時間、休憩・トラブル対応込み)
 - **標的 OS**: Windows 10 / Windows 11(母艦・被害役ともに Windows を想定)
-- **題材ボード**: RP2040 搭載 SECCON バッジ基板
+- **題材ボード**: RP2040 搭載 SECCON バッジ基板(Waveshare RP2040-Zero)
 - **スタック**: CircuitPython 9.x + `adafruit_hid`
 
 ---
@@ -78,10 +78,14 @@ PowerShell、コマンドプロンプト、任意コマンドの実行、ダウ�
 4. 自動的に再起動し、エクスプローラーに **`CIRCUITPY`** という新しいドライブが現れれば成功。
 
 > **UF2 の入手について**
-> `circuitpython.org/downloads` でバッジ専用ビルドがあればそれを使う。
-> 専用ビルドが無い場合は **Raspberry Pi Pico (RP2040) 汎用ビルド** を候補にする。
-> USB HID/MSC の演習だけなら大きな差は出にくいが、GPIO ピン番号はボード資料に合わせて確認する。
-> バージョンは **9.x 系の最新安定版** を使うこと(RP2040 は広く対応)。
+> 今回使うバッジは **Waveshare RP2040-Zero** です。専用ビルドを次のページから入手してください。
+>
+> **<https://circuitpython.org/board/waveshare_rp2040_zero/>**
+>
+> ページの「DOWNLOAD .UF2 NOW」から **9.x 系の最新安定版**(Language: English で可)をダウンロードします。
+> 会場では **オフライン配布**するので、講師は事前にこの `.uf2` を各自へ配ってください。
+> 万一このビルドが使えない場合は **Raspberry Pi Pico (RP2040) 汎用ビルド** でも USB HID/MSC は動きます
+> (GPIO ピン番号はボード資料に合わせて確認する)。
 
 ### 1.2 ライブラリを配置する
 `adafruit_hid` を使う。配布バンドルから **`CIRCUITPY\lib\` に `adafruit_hid` フォルダごと** コピーする。

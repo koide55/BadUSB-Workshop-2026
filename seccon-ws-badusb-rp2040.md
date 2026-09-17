@@ -4,7 +4,7 @@
 - **対象**: 中級(Python が読める / ターミナル操作に抵抗がない)
 - **所要時間**: 半日(約 3.5〜4 時間、休憩・トラブル対応込み)
 - **標的 OS**: macOS(母艦・被害役ともに Mac を想定)
-- **題材ボード**: RP2040 搭載 SECCON バッジ基板
+- **題材ボード**: RP2040 搭載 SECCON バッジ基板(Waveshare RP2040-Zero)
 - **スタック**: CircuitPython 9.x + `adafruit_hid`
 
 ---
@@ -69,10 +69,14 @@ CircuitPython は起動しただけで `CIRCUITPY` ドライブ(MSC)と HID キ�
 4. 自動的に再起動し、**`CIRCUITPY`** という新しいドライブが現れれば成功。
 
 > **UF2 の入手について**
-> `circuitpython.org/downloads` でバッジ専用ビルドがあればそれを使う。
-> 専用ビルドが無い場合は **Raspberry Pi Pico (RP2040) 汎用ビルド** で USB HID/MSC は問題なく動く
+> 今回使うバッジは **Waveshare RP2040-Zero** です。専用ビルドを次のページから入手してください。
+>
+> **<https://circuitpython.org/board/waveshare_rp2040_zero/>**
+>
+> ページの「DOWNLOAD .UF2 NOW」から **9.x 系の最新安定版**(言語は Language: English で可)をダウンロードします。
+> 会場では **オフライン配布**するので、講師は事前にこの `.uf2` を各自へ配ってください。
+> 万一このビルドが使えない場合は **Raspberry Pi Pico (RP2040) 汎用ビルド** でも USB HID/MSC は動きます
 > (GPIO ピン配置はボードで異なるが、今回使うのは USB だけなので影響は小さい)。
-> バージョンは **9.x 系の最新安定版** を使うこと(RP2040 は広く対応)。
 
 ### 1.2 ライブラリを配置する
 `adafruit_hid` を使う。配布バンドルから **`CIRCUITPY/lib/` に `adafruit_hid` フォルダごと** コピーする。
