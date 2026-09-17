@@ -15,7 +15,7 @@
 <kbd>Tab</kbd> でフォーカスを送り、<kbd>Enter</kbd> で押す。この繰り返しで、
 サインイン・検索・カート投入まで、マウスなしでたどり着けます。
 
-これが [BadUSB 本編](seccon-ws-badusb-rp2350.md)にどうつながるか。
+これが [BadUSB 本編](seccon-ws-badusb-rp2040.md)にどうつながるか。
 資料1(OS 操作)・資料2(プログラム実行)に続き、資料3は
 **「Web サービス上の操作すらキー入力だけで自動化できる」**ことを示します。
 BadUSB は <kbd>Tab</kbd> と <kbd>Enter</kbd> の連打を人間より速く・正確に送れるため、

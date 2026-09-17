@@ -1,10 +1,10 @@
-# RP2350 SECCON バッジで作る BadUSB ハンズオン
+# RP2040 SECCON バッジで作る BadUSB ハンズオン
 ### HID キーボード + USB マスストレージの複合デバイスを CircuitPython で体験する
 
 - **対象**: 中級(Python が読める / ターミナル操作に抵抗がない)
 - **所要時間**: 半日(約 3.5〜4 時間、休憩・トラブル対応込み)
 - **標的 OS**: macOS(母艦・被害役ともに Mac を想定)
-- **題材ボード**: RP2350 搭載 SECCON バッジ基板
+- **題材ボード**: RP2040 搭載 SECCON バッジ基板
 - **スタック**: CircuitPython 9.x + `adafruit_hid`
 
 ---
@@ -13,7 +13,7 @@
 
 ### 0.1 このハンズオンで作るもの
 挿すと **「ただのUSBメモリ」に見えるのに、裏で勝手にキーボード入力を送り込む** デバイス。
-いわゆる **BadUSB / Rubber Ducky** を、RP2350 バッジで自作する。
+いわゆる **BadUSB / Rubber Ducky** を、RP2040 バッジで自作する。
 
 USB の「コンポジットデバイス(複合デバイス)」という仕組みを使い、1本のケーブルで
 **マスストレージ(MSC)** と **HID キーボード** を同時にホストへ見せるのがミソ。
@@ -52,7 +52,7 @@ CircuitPython は起動しただけで `CIRCUITPY` ドライブ(MSC)と HID キ�
 | 予備 | §9 | 応用 / CTF 的発展課題 |
 
 ### 0.5 持ち物 / 事前準備(講師)
-- RP2350 SECCON バッジ(人数分)+ データ通信対応 USB ケーブル(充電専用ケーブル厳禁)
+- RP2040 SECCON バッジ(人数分)+ データ通信対応 USB ケーブル(充電専用ケーブル厳禁)
 - 参加者 Mac(各自)。管理者権限があると望ましい
 - CircuitPython UF2 と Adafruit ライブラリバンドルを **オフライン配布**(会場 Wi-Fi を当てにしない)
 - ジャンパワイヤ or タクトスイッチ(アーム用、§6)。バッジ上の空きピン/ボタンで代替可
@@ -63,16 +63,16 @@ CircuitPython は起動しただけで `CIRCUITPY` ドライブ(MSC)と HID キ�
 
 ### 1.1 CircuitPython を書き込む
 1. バッジの **BOOTSEL(ブート)ボタンを押しながら** USB を Mac に接続する。
-   - バッジ固有のボタン位置はバッジの配布資料で確認。RP2350 の BOOTSEL パッド/ボタン。
-2. Finder に **`RP2350`(または `RPI-RP2`)** という小容量ドライブが現れる。
+   - バッジ固有のボタン位置はバッジの配布資料で確認。RP2040 の BOOTSEL パッド/ボタン。
+2. Finder に **`RPI-RP2`** という小容量ドライブが現れる。
 3. 配布された **CircuitPython の `.uf2`** をそのドライブにドラッグ&ドロップ。
 4. 自動的に再起動し、**`CIRCUITPY`** という新しいドライブが現れれば成功。
 
 > **UF2 の入手について**
 > `circuitpython.org/downloads` でバッジ専用ビルドがあればそれを使う。
-> 専用ビルドが無い場合は **Raspberry Pi Pico 2 (RP2350) 汎用ビルド** で USB HID/MSC は問題なく動く
+> 専用ビルドが無い場合は **Raspberry Pi Pico (RP2040) 汎用ビルド** で USB HID/MSC は問題なく動く
 > (GPIO ピン配置はボードで異なるが、今回使うのは USB だけなので影響は小さい)。
-> バージョンは **9.1 以降**(RP2350 対応)を使うこと。
+> バージョンは **9.x 系の最新安定版** を使うこと(RP2040 は広く対応)。
 
 ### 1.2 ライブラリを配置する
 `adafruit_hid` を使う。配布バンドルから **`CIRCUITPY/lib/` に `adafruit_hid` フォルダごと** コピーする。
@@ -163,7 +163,7 @@ kbd = Keyboard(usb_hid.devices)
 layout = KeyboardLayoutUS(kbd)
 
 time.sleep(2)               # 保存直後の暴発防止 & ホスト準備待ち
-layout.write("Hello from RP2350 SECCON badge!\n")
+layout.write("Hello from RP2040 SECCON badge!\n")
 ```
 
 - `layout.write(...)` は文字列を「US配列前提で」キーストロークに変換して送る。

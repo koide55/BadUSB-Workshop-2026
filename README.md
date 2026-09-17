@@ -1,6 +1,6 @@
 # SECCON BadUSB Workshop
 
-RP2350 搭載 SECCON バッジで **BadUSB(Rubber Ducky 型の HID 注入デバイス)** を自作し、
+RP2040 搭載 SECCON バッジで **BadUSB(Rubber Ducky 型の HID 注入デバイス)** を自作し、
 「USB メモリの顔をしたデバイスが、なぜ・どこまで危険になり得るのか」を **手を動かして理解する** 半日ワークショップの教材集です。
 
 攻撃手法の習得ではなく、**仕組みの理解と、検知・防御・自衛** を目的としています。
@@ -28,7 +28,7 @@ RP2350 搭載 SECCON バッジで **BadUSB(Rubber Ducky 型の HID 注入デバ�
 |---|---|
 | 対象 | 中級(Python が読める / ターミナル操作に抵抗がない) |
 | 所要時間 | 半日(約 3.5〜4 時間、休憩・トラブル対応込み) |
-| 題材ボード | RP2350 搭載 SECCON バッジ基板 |
+| 題材ボード | RP2040 搭載 SECCON バッジ基板 |
 | スタック | CircuitPython 9.x + `adafruit_hid` |
 | 標的 OS | macOS 版 / Windows 版を用意(参加者の環境に合わせて選ぶ) |
 
@@ -55,12 +55,12 @@ RP2350 搭載 SECCON バッジで **BadUSB(Rubber Ducky 型の HID 注入デバ�
 
 ### 2. 本編 ── BadUSB ハンズオン(バッジで自作する)
 
-導入で得た理解を土台に、RP2350 バッジで HID キーボード + USB マスストレージの複合デバイスを作ります。
+導入で得た理解を土台に、RP2040 バッジで HID キーボード + USB マスストレージの複合デバイスを作ります。
 
 | ハンドブック | 標的 OS | デモの範囲 |
 |---|---|---|
-| [macOS 版ハンドブック](seccon-ws-badusb-rp2350.md) | macOS | Spotlight でアプリ起動(電卓 / TextEdit)まで |
-| [Windows 版ハンドブック](seccon-ws-badusb-rp2350-windows.md) | Windows 10 / 11 | Notepad を開いて固定メッセージを打つのみに限定 |
+| [macOS 版ハンドブック](seccon-ws-badusb-rp2040.md) | macOS | Spotlight でアプリ起動(電卓 / TextEdit)まで |
+| [Windows 版ハンドブック](seccon-ws-badusb-rp2040-windows.md) | Windows 10 / 11 | Notepad を開いて固定メッセージを打つのみに限定 |
 
 各ハンドブックは、環境準備 → コンポジットデバイスの理解 → キー入力 → 標的ペイロード(無害)→
 マウント時の確実な発火 → アーム用スイッチ → レイアウトの罠 → **守り側の検知と防御** → 発展課題、の順で進みます。
@@ -79,7 +79,7 @@ RP2350 搭載 SECCON バッジで **BadUSB(Rubber Ducky 型の HID 注入デバ�
 
 ## 必要なもの(講師)
 
-- RP2350 SECCON バッジ(人数分)+ **データ通信対応** USB ケーブル(充電専用ケーブル厳禁)
+- RP2040 SECCON バッジ(人数分)+ **データ通信対応** USB ケーブル(充電専用ケーブル厳禁)
 - 参加者 PC(macOS または Windows 10/11)
 - CircuitPython の UF2 と Adafruit ライブラリバンドルを **オフライン配布**(会場 Wi-Fi を当てにしない)
 - ジャンパワイヤ or タクトスイッチ(アーム用)。バッジ上の空きピン/ボタンで代替可
@@ -96,8 +96,8 @@ RP2350 搭載 SECCON バッジで **BadUSB(Rubber Ducky 型の HID 注入デバ�
 ├── jigsaw-1-keyboard-only.md              # 導入資料1(OS 操作)
 ├── jigsaw-2-compile-without-ide.md        # 導入資料2(コード実行)
 ├── jigsaw-3-keyboard-web.md               # 導入資料3(Web 操作)
-├── seccon-ws-badusb-rp2350.md             # 本編ハンドブック(macOS)
-├── seccon-ws-badusb-rp2350-windows.md     # 本編ハンドブック(Windows)
+├── seccon-ws-badusb-rp2040.md             # 本編ハンドブック(macOS)
+├── seccon-ws-badusb-rp2040-windows.md     # 本編ハンドブック(Windows)
 ├── assets/jigsaw-1/                        # 資料1の図版(PNG)
 └── *.docx                                  # 変換元の Word 原本(provenance 用)
 ```

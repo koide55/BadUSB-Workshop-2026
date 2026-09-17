@@ -1,10 +1,10 @@
-# RP2350 SECCON バッジで作る BadUSB ハンズオン Windows対応版
+# RP2040 SECCON バッジで作る BadUSB ハンズオン Windows対応版
 ### HID キーボード + USB マスストレージの複合デバイスを CircuitPython で安全に体験する
 
 - **対象**: 中級(Python が読める / Windows の基本操作に抵抗がない)
 - **所要時間**: 半日(約 3.5〜4 時間、休憩・トラブル対応込み)
 - **標的 OS**: Windows 10 / Windows 11(母艦・被害役ともに Windows を想定)
-- **題材ボード**: RP2350 搭載 SECCON バッジ基板
+- **題材ボード**: RP2040 搭載 SECCON バッジ基板
 - **スタック**: CircuitPython 9.x + `adafruit_hid`
 
 ---
@@ -13,7 +13,7 @@
 
 ### 0.1 このハンズオンで作るもの
 挿すと **「ただのUSBメモリ」に見えるのに、裏でキーボード入力を送り込める** デバイス。
-いわゆる **BadUSB / Rubber Ducky** の仕組みを、RP2350 バッジと CircuitPython で理解する。
+いわゆる **BadUSB / Rubber Ducky** の仕組みを、RP2040 バッジと CircuitPython で理解する。
 
 USB の「コンポジットデバイス(複合デバイス)」という仕組みを使うと、1本のケーブルで
 **マスストレージ(MSC)** と **HID キーボード** を同時にホストへ見せられる。
@@ -59,7 +59,7 @@ PowerShell、コマンドプロンプト、任意コマンドの実行、ダウ�
 | 予備 | §9 | 応用 / CTF 的発展課題 |
 
 ### 0.5 持ち物 / 事前準備(講師)
-- RP2350 SECCON バッジ(人数分)+ データ通信対応 USB ケーブル(充電専用ケーブル厳禁)
+- RP2040 SECCON バッジ(人数分)+ データ通信対応 USB ケーブル(充電専用ケーブル厳禁)
 - 参加者 Windows PC(Windows 10 / 11)。管理者権限があるとドライバ確認やログ確認がしやすい
 - CircuitPython UF2 と Adafruit ライブラリバンドルを **オフライン配布**(会場 Wi-Fi を当てにしない)
 - REPL 確認用ツール: Mu Editor、Thonny、Tera Term、PuTTY などのいずれか
@@ -72,16 +72,16 @@ PowerShell、コマンドプロンプト、任意コマンドの実行、ダウ�
 
 ### 1.1 CircuitPython を書き込む
 1. バッジの **BOOTSEL(ブート)ボタンを押しながら** USB を Windows PC に接続する。
-   - バッジ固有のボタン位置はバッジの配布資料で確認。RP2350 の BOOTSEL パッド/ボタン。
-2. エクスプローラーに **`RP2350`(または `RPI-RP2`)** という小容量ドライブが現れる。
+   - バッジ固有のボタン位置はバッジの配布資料で確認。RP2040 の BOOTSEL パッド/ボタン。
+2. エクスプローラーに **`RPI-RP2`** という小容量ドライブが現れる。
 3. 配布された **CircuitPython の `.uf2`** をそのドライブにドラッグ&ドロップする。
 4. 自動的に再起動し、エクスプローラーに **`CIRCUITPY`** という新しいドライブが現れれば成功。
 
 > **UF2 の入手について**
 > `circuitpython.org/downloads` でバッジ専用ビルドがあればそれを使う。
-> 専用ビルドが無い場合は **Raspberry Pi Pico 2 (RP2350) 汎用ビルド** を候補にする。
+> 専用ビルドが無い場合は **Raspberry Pi Pico (RP2040) 汎用ビルド** を候補にする。
 > USB HID/MSC の演習だけなら大きな差は出にくいが、GPIO ピン番号はボード資料に合わせて確認する。
-> バージョンは **9.1 以降**(RP2350 対応)を使うこと。
+> バージョンは **9.x 系の最新安定版** を使うこと(RP2040 は広く対応)。
 
 ### 1.2 ライブラリを配置する
 `adafruit_hid` を使う。配布バンドルから **`CIRCUITPY\lib\` に `adafruit_hid` フォルダごと** コピーする。
@@ -209,7 +209,7 @@ kbd = Keyboard(usb_hid.devices)
 layout = KeyboardLayoutUS(kbd)
 
 time.sleep(2)               # 保存直後の暴発防止 & ホスト準備待ち
-layout.write("Hello from RP2350 SECCON badge!\n")
+layout.write("Hello from RP2040 SECCON badge!\n")
 ```
 
 - `layout.write(...)` は文字列を「US配列前提で」キーストロークに変換して送る。
@@ -588,7 +588,7 @@ layout.write('user@example.com "test" (1)\n')
 | 症状 | 原因 | 対処 |
 |---|---|---|
 | `CIRCUITPY` が出ない | 充電専用ケーブル / UF2 書き込み失敗 / BOOTSEL に入れていない | データ線ありのケーブルに交換 / BOOTSEL 押しながら再接続 / UF2 を再書き込み |
-| `RPI-RP2` または `RP2350` が出ない | BOOTSEL 操作失敗 / USB ハブ相性 | ボタンを押したまま直挿し / 別ポートを使う |
+| `RPI-RP2` が出ない | BOOTSEL 操作失敗 / USB ハブ相性 | ボタンを押したまま直挿し / 別ポートを使う |
 | REPL の COM ポートが見えない | CDC ドライバ認識待ち / ケーブル不良 | デバイス マネージャーを更新 / 再接続 / ケーブル交換 |
 | `ImportError: adafruit_hid` | ライブラリ未配置 / フォルダ階層ミス | `CIRCUITPY\lib\adafruit_hid` を確認 |
 | キーが全く打たれない | ホスト準備前に発火 / フォーカスが入力欄に無い / アームされていない | 待ち時間を増やす / Notepad の入力欄へカーソル / GPIO ジャンパ確認 |
