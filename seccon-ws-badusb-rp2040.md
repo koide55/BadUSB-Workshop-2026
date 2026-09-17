@@ -81,6 +81,14 @@ CircuitPython は起動しただけで `CIRCUITPY` ドライブ(MSC)と HID キ�
 ### 1.2 ライブラリを配置する
 `adafruit_hid` を使う。配布バンドルから **`CIRCUITPY/lib/` に `adafruit_hid` フォルダごと** コピーする。
 
+> **adafruit_hid の入手について**
+> Adafruit CircuitPython Library Bundle から入手します。CircuitPython 本体の **メジャーバージョンに合ったバンドル(9.x 系)** を選ぶこと。
+>
+> **<https://circuitpython.org/libraries>**
+>
+> `adafruit-circuitpython-bundle-9.x-mpy-*.zip` を展開し、`lib/adafruit_hid/` フォルダを `CIRCUITPY/lib/` へコピーします。UF2 と同様に **オフライン配布**しておくと会場でつまずきません。
+> コマンドで入れる場合は [circup](https://github.com/adafruit/circup)(`pip install circup` → `circup install adafruit_hid`)が、接続中のボードに合う版を自動で選んで入れてくれます。
+
 ```
 CIRCUITPY/
 ├── code.py          ← メインで書くファイル(保存すると即実行)
