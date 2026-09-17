@@ -1,0 +1,26 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# Python (variant materials, local tooling)
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# LibreOffice / Office lock & temp files
+.~lock.*#
+~$*.docx
+
+# Extracted EMF originals are embedded in the source .docx already;
+# the usable PNGs live under assets/. Keep the repo lean by not tracking
+# the large standalone EMF extracts. Remove these lines to track them.
+assets/jigsaw-1/*.emf
